@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">Poukar Company</string>
     <string name="executive_head">Jednatel:</string>
-    <string name="phone_number">Telefonní číslo:</string>
-    <string name="address">Adresa:</string>
-    <string name="opening_hours">Otevírací doba:</string>
+    <string name="monday">Pondělí</string>
+    <string name="tuesday">Úterý</string>
+    <string name="wednesday">Středa</string>
+    <string name="thursday">Čtvrtek</string>
+    <string name="friday">Pátek</string>
+    <string name="saturday">Sobota</string>
+    <string name="sunday">Neděle</string>
 </resources>
