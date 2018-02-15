@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
+import java.time.DayOfWeek;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
@@ -24,6 +26,11 @@ public class MainActivity extends AppCompatActivity {
         openingHours.put(getString(R.string.saturday), "closed");
         openingHours.put(getString(R.string.sunday), "closed");
 
+        Calendar calendar = Calendar.getInstance();
+
+
+        //openingHours.values().toArray()[0];
+
 
         TextView executiveHead = (TextView) findViewById(R.id.executive_head_name);
         executiveHead.setText("Ing. Aleš Poukar");
@@ -42,5 +49,7 @@ public class MainActivity extends AppCompatActivity {
         TextView address = (TextView) findViewById(R.id.address);
         address.setText("28. října 3346/91\n"
                         + "702 00 Ostrava");
+
+
     }
 }
