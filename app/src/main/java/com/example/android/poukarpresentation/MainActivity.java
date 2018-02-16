@@ -1,5 +1,7 @@
 package com.example.android.poukarpresentation;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +19,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Company poukar = new Company("Poukar - české šperky",
+                                     "Ing. Aleš Poukar",
+                                     "+420602538800",
+                                     "28. října 3346/91",
+                                     "702 00 Ostrava")
+
+
         LinkedHashMap<String, String> openingHours = new LinkedHashMap<String, String>();
         openingHours.put(getString(R.string.monday), "7:00 - 16:00");
         openingHours.put(getString(R.string.tuesday), "7:00 - 16:00");
@@ -26,17 +35,12 @@ public class MainActivity extends AppCompatActivity {
         openingHours.put(getString(R.string.saturday), "closed");
         openingHours.put(getString(R.string.sunday), "closed");
 
-        Calendar calendar = Calendar.getInstance();
-
-
-        //openingHours.values().toArray()[0];
-
 
         TextView executiveHead = (TextView) findViewById(R.id.executive_head_name);
-        executiveHead.setText("Ing. Aleš Poukar");
+        executiveHead.setText(getString(R.string.executive_head_name));
 
-        TextView phoneNumber = (TextView) findViewById(R.id.phone_number);
-        phoneNumber.setText("+420 620 538 800");
+        TextView phoneNumberTextView = (TextView) findViewById(R.id.phone_number);
+        phoneNumberTextView.setText(getString(R.string.phone_number));
 
         TextView openingDaysTextView = (TextView) findViewById(R.id.opening_days);
         TextView openingHoursTextView = (TextView) findViewById(R.id.opening_hours);
@@ -47,9 +51,18 @@ public class MainActivity extends AppCompatActivity {
 
 
         TextView address = (TextView) findViewById(R.id.address);
-        address.setText("28. října 3346/91\n"
-                        + "702 00 Ostrava");
+        address.setText(poukar.getFirstLineOfAddress()
+                "\n" + poukar.getSecondLineOfAddress());
 
 
     }
+
+    public void dialPhoneNumber() {
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        intent.setData(Uri.parse("tel:" + getString(R.string.phone_number)));
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+    }
+
 }
