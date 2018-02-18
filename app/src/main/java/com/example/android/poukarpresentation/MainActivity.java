@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -20,19 +21,20 @@ import ss.com.bannerslider.views.BannerSlider;
 
 public class MainActivity extends AppCompatActivity {
 
-    Company poukar = new Company("Poukar - české šperky",
-            "Velkoobchod",
-            "Ing. Aleš Poukar",
-            "+420 602 538 800",
-            "obchod@ceskesperky.cz",
-            "www.ceskesperky.cz",
-            "28. října 3346/91",
-            "702 00 Ostrava");
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        final HashMap<String, String> poukar = new HashMap<>();
+        poukar.put("Company Name", "Poukar - české šperky");
+        poukar.put("Company Type", "Velkoobchod");
+        poukar.put("Executive Head", "Ing. Aleš Poukar");
+        poukar.put("Phone number", "+420 602 538 800");
+        poukar.put("Email Address", "obchod@ceskesperky.cz");
+        poukar.put("Web Address", "www.ceskesperky.cz");
+        poukar.put("Address first line", "28. října 3346/91");
+        poukar.put("Address second line", "702 00 Ostrava");
 
         LinkedHashMap<String, String> openingHours = new LinkedHashMap<String, String>();
         openingHours.put(getString(R.string.monday), "7:00 - 16:00");
@@ -55,46 +57,46 @@ public class MainActivity extends AppCompatActivity {
 
         //Sets the
         TextView companyNameTextView = (TextView) findViewById(R.id.company_name);
-        companyNameTextView.setText(poukar.getCompanyName());
+        companyNameTextView.setText(poukar.get("Company Name"));
 
         TextView companyDescription = (TextView) findViewById(R.id.company_description);
-        companyDescription.setText(poukar.getCompanyType());
+        companyDescription.setText(poukar.get("Company Type"));
 
         TextView executiveHead = (TextView) findViewById(R.id.executive_head_name);
-        executiveHead.setText(poukar.getExecutiveHeadName());
+        executiveHead.setText(poukar.get("Executive Head"));
 
         LinearLayout phoneNumberLayout = (LinearLayout) findViewById(R.id.phone_number_layout);
         phoneNumberLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialPhoneNumber(poukar.getPhoneNumber());
+                dialPhoneNumber(poukar.get("Phone number"));
             }
         });
 
             TextView phoneNumberTextView = (TextView) findViewById(R.id.phone_number);
-        phoneNumberTextView.setText(poukar.getPhoneNumber());
+        phoneNumberTextView.setText(poukar.get("Phone number"));
 
         LinearLayout emailAddressLayout = (LinearLayout) findViewById(R.id.email_address_layout);
         emailAddressLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sendEmail(poukar.getEmailAddress());
+                sendEmail(poukar.get("Email Address"));
             }
         });
 
         TextView emailAddressTextView = (TextView) findViewById(R.id.email_address);
-        emailAddressTextView.setText(poukar.getEmailAddress());
+        emailAddressTextView.setText(poukar.get("Email Address"));
 
         LinearLayout webAddressLayout = (LinearLayout) findViewById(R.id.web_address_layout);
         webAddressLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openWebPage(poukar.getWebAddress());
+                openWebPage(poukar.get("Web Address"));
             }
         });
 
         TextView webAddressTextView = (TextView) findViewById(R.id.web_address);
-        webAddressTextView.setText(poukar.getWebAddress());
+        webAddressTextView.setText(poukar.get("Web Address"));
 
         TextView openingDaysTextView = (TextView) findViewById(R.id.opening_days);
         TextView openingHoursTextView = (TextView) findViewById(R.id.opening_hours);
@@ -107,14 +109,14 @@ public class MainActivity extends AppCompatActivity {
         addressLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showMap(poukar.getFirstLineOfAddress()
-                        + " " + poukar.getSecondLineOfAddress());
+                showMap((poukar.get("Address first line")
+                        + " " + poukar.get("Address second line")));
             }
         });
 
         TextView address = (TextView) findViewById(R.id.address);
-        address.setText(poukar.getFirstLineOfAddress() +
-                "\n" + poukar.getSecondLineOfAddress());
+        address.setText(poukar.get("Address first line") +
+                "\n" + poukar.get("Address second line"));
 
 
     }
