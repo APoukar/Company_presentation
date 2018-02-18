@@ -8,16 +8,22 @@ import java.util.HashMap;
 
 public class Company {
     private String mCompanyName;
+    private String mCompanyType;
     private String mExecutiveHead;
     private String mPhoneNumber;
+    private String mEmailAddress;
+    private String mWebAddress;
     private String mAddressFirstLine;
     private String mAddressSecondLine;
     //public HashMap<int, int> openingHours;
 
-    public Company(String companyName, String executiveHead, String phoneNumber, String addressFirstLine, String addressSecondLine) {
+    public Company(String companyName, String companyType, String executiveHead, String phoneNumber, String emailAddress, String webAddress, String addressFirstLine, String addressSecondLine) {
         mCompanyName = companyName;
+        mCompanyType = companyType;
         mExecutiveHead = executiveHead;
         mPhoneNumber = phoneNumber;
+        mEmailAddress = emailAddress;
+        mWebAddress = webAddress;
         mAddressFirstLine = addressFirstLine;
         mAddressSecondLine = addressSecondLine;
     }
@@ -33,6 +39,9 @@ public class Company {
     public String getPhoneNumber() {
         return mPhoneNumber;
     }
+    public String getEmailAddress() {
+        return mEmailAddress;
+    }
 
     public String getFirstLineOfAddress() {
         return mAddressFirstLine;
@@ -40,6 +49,14 @@ public class Company {
 
     public String getSecondLineOfAddress() {
         return mAddressSecondLine;
+    }
+
+    public String getCompanyType() {
+        return mCompanyType;
+    }
+
+    public String getWebAddress() {
+        return mWebAddress;
     }
 
 }
