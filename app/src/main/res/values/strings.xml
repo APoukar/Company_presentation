@@ -11,4 +11,5 @@
     <string name="saturday">Sobota</string>
     <string name="sunday">Neděle</string>
     <string name="email_subject">Dotaz z aplikace Poukar</string>
+    <string name="wholesale">Velkoobchod</string>
 </resources>
